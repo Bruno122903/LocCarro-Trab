@@ -1,0 +1,61 @@
+<div class="lista-locacoes-container">
+  <h2>Lista de Locações</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Carro</th>
+        <th>Marca</th>
+        <th>Placa</th>
+        <th>Ano (Carro)</th>
+        <th>Quantidade de Dias</th>
+        <th>Valor Total</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let locacao of locacoes; let i = index">
+        <td *ngIf="locacaoEditada?.index !== i">{{ locacao.cliente.nome }}</td>
+        <td *ngIf="locacaoEditada?.index === i">
+          <input [(ngModel)]="locacaoEditada.cliente.nome" />
+        </td>
+
+        <td *ngIf="locacaoEditada?.index !== i">{{ locacao.filme.nome }}</td>
+        <td *ngIf="locacaoEditada?.index === i">
+          <input [(ngModel)]="locacaoEditada.filme.nome" />
+        </td>
+
+        <td *ngIf="locacaoEditada?.index !== i">{{ locacao.filme.marca }}</td>
+        <td *ngIf="locacaoEditada?.index === i">
+          <input [(ngModel)]="locacaoEditada.filme.marca" />
+        </td>
+
+        <td *ngIf="locacaoEditada?.index !== i">{{ locacao.filme.placa }}</td>
+        <td *ngIf="locacaoEditada?.index === i">
+          <input [(ngModel)]="locacaoEditada.filme.placa" />
+        </td>
+
+        <td *ngIf="locacaoEditada?.index !== i">{{ locacao.filme.ano }}</td>
+        <td *ngIf="locacaoEditada?.index === i">
+          <input [(ngModel)]="locacaoEditada.filme.ano" />
+        </td>
+
+        <td *ngIf="locacaoEditada?.index !== i">{{ locacao.quantidadeDias }}</td>
+        <td *ngIf="locacaoEditada?.index === i">
+          <input [(ngModel)]="locacaoEditada.quantidadeDias" />
+        </td>
+
+        <td *ngIf="locacaoEditada?.index !== i">R$ {{ locacao.valorTotal }}</td>
+        <td *ngIf="locacaoEditada?.index === i">
+          <input [(ngModel)]="locacaoEditada.valorTotal" />
+        </td>
+
+        <td>
+          <button (click)="excluirLocacao(i)" class="delete-button">Excluir</button>
+          <button *ngIf="locacaoEditada?.index !== i" (click)="editarLocacao(i)" class="edit-button">Editar</button>
+          <button *ngIf="locacaoEditada?.index === i" (click)="salvarEdicao()" class="save-button">Salvar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
